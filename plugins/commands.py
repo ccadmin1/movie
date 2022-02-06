@@ -63,7 +63,7 @@ async def start(bot, cmd):
                         print(e)
                         f_caption=f_caption
                 if f_caption is None:
-                    f_caption = f"@searchitrobot
+                    f_caption = f"@searchitrobot"
                 buttons = [
                     [
                         InlineKeyboardButton('Search Again', switch_inline_query_current_chat='')
