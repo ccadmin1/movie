@@ -231,7 +231,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 buttons = data['buttons'][int(index)+1].copy()
 
                 buttons.append(
-                    [InlineKeyboardButton("<<== 𝙱𝙰𝙲𝙺", callback_data=f"back_{int(index)+1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)+1}_{keyword}")]
+                    [InlineKeyboardButton("<<== 𝙱𝙰𝙲𝙺", callback_data=f"back_{int(index)+1}_{keyword}"),InlineKeyboardButton("𝙽𝙴𝚇𝚃 ==>>", callback_data=f"next_{int(index)+1}_{keyword}")]
                 )
                 buttons.append(
                     [InlineKeyboardButton(f"🔰 𝙿𝙰𝙶𝙴𝚂 {int(index)+2}/{data['total']}  🔰", callback_data="pages")]
@@ -273,7 +273,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 buttons = data['buttons'][int(index)-1].copy()
 
                 buttons.append(
-                    [InlineKeyboardButton("<<== 𝙱𝙰𝙲𝙺", callback_data=f"back_{int(index)-1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
+                    [InlineKeyboardButton("<<== 𝙱𝙰𝙲𝙺", callback_data=f"back_{int(index)-1}_{keyword}"),InlineKeyboardButton("𝙽𝙴𝚇𝚃 ==>>", callback_data=f"next_{int(index)-1}_{keyword}")]
                 )
                 buttons.append(
                     [InlineKeyboardButton(f"🔰 𝙿𝙰𝙶𝙴𝚂 {int(index)}/{data['total']}  🔰", callback_data="pages")]
