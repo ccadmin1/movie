@@ -63,11 +63,10 @@ async def start(bot, cmd):
                         print(e)
                         f_caption=f_caption
                 if f_caption is None:
-                    f_caption = f"{files.file_name}"
+                    f_caption = f"@searchitrobot
                 buttons = [
                     [
-                        InlineKeyboardButton('Search again', switch_inline_query_current_chat=''),
-                        InlineKeyboardButton('More Bots', url='https://t.me/subin_works/122')
+                        InlineKeyboardButton('Search Again', switch_inline_query_current_chat='')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -99,8 +98,8 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton("Other Bots", url="https://t.me/subin_works/122")
+                        InlineKeyboardButton("Search Here", switch_inline_query_current_chat='')
+                        InlineKeyboardButton("How to Use Me", url="https://t.me/searchitrobotupdates")
                     ],
                     [
                         InlineKeyboardButton("About", callback_data="about")
