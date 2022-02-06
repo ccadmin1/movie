@@ -102,7 +102,7 @@ async def start(bot, cmd):
                         InlineKeyboardButton('How to Use Me', url='https://t.me/searchitrobotupdates')
                     ],
                     [
-                        InlineKeyboardButton("About", callback_data="about")
+                        InlineKeyboardButton('About', url='https://t.me/searchitrobotupdates')
                     ]
                 ]
             )
