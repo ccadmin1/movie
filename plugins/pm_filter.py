@@ -288,7 +288,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "about":
             buttons = [
                 [
-                    InlineKeyboardButton('Update Channel', url='https://t.me/@GrandCinemas'),
+                    InlineKeyboardButton('Update Channel', url='https://t.me/GrandCinemas'),
                     InlineKeyboardButton('Source Code', url='https://t.me/SearchItRobotUpdates')
                 ]
                 ]
@@ -313,7 +313,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"➠➠➠ 𝓢𝓮𝓪𝓻𝓬𝓱𝓘𝓣𝓡𝓸𝓫𝓸𝓽"
                 buttons = [
                     [
-                        InlineKeyboardButton('Main Channel', url='https://t.me/@GrandCinemas'),
                         InlineKeyboardButton('Update Channel', url='https://t.me/SearchItRobotUpdates')
                     ]
                     ]
@@ -345,7 +344,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"➠➠➠ 𝓢𝓮𝓪𝓻𝓬𝓱𝓘𝓣𝓡𝓸𝓫𝓸𝓽"
                 buttons = [
                     [
-
                         InlineKeyboardButton('Update Channel', url='https://t.me/SearchItRobotUpdates')
                     ]
                     ]
