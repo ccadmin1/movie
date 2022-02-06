@@ -1,5 +1,4 @@
-from bot import Bot
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from broadcast_db import db, send_msg
 from pyrogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
@@ -14,15 +13,15 @@ from info import ADMINS
 
 broadcast_ids = {}
 
-@Bot.on_message(filters.private, group=5)
-async def add_user_todb(c:Bot,message: Message):
+@Client.on_message(filters.private, group=5)
+async def add_user_todb(c:Client,message: Message):
     user_id = message.from_user.id
     if not await db.is_user_exist(user_id):
         await db.add_user(user_id)
 
 
-@Bot.on_message(filters.private & filters.command('settings'))
-async def sed_settings(c:Bot,message: Message):
+@Client.on_message(filters.private & filters.command('settings'))
+async def sed_settings(c:Client,message: Message):
     user_id = message.from_user.id
     settings = await db.get_settings(user_id)
     if settings:
@@ -34,8 +33,8 @@ async def sed_settings(c:Bot,message: Message):
     await message.reply(txt,reply_markup=InlineKeyboardMarkup(btn))
 
 
-@Bot.on_callback_query(filters.regex('^broadcast\|(enable|disable)$'), group= 5)
-async def toogle_cast(c:Bot, update:CallbackQuery):
+@Client.on_callback_query(filters.regex('^broadcast\|(enable|disable)$'), group= 5)
+async def toogle_cast(c:Client, update:CallbackQuery):
     user_id = update.from_user.id
     typ = update.data.split('|',1)[1]
     if typ == 'enable':
@@ -49,16 +48,16 @@ async def toogle_cast(c:Bot, update:CallbackQuery):
     await update.edit_message_text(txt,reply_markup=InlineKeyboardMarkup(btn))
 
 
-@Bot.on_message(filters.command('subcount') & filters.user(ADMINS) & filters.private)
-async def get_users(client: Bot, message: Message):
+@Client.on_message(filters.command('subcount') & filters.user(ADMINS) & filters.private)
+async def get_users(client: Client, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text="Counting Users....")
     total_users = await db.total_users_count()
     enabled_users = len(list(await db.get_all_enabled_users()))
     await msg.edit(text=f"Total user(s) using Bot - {total_users}\nTotal user(s) enbled Broadcast - {enabled_users}")
 
 
-@Bot.on_message(filters.command('broadcast') & filters.user(ADMINS) & filters.private)
-async def broadcast(client: Bot, message: Message):
+@Client.on_message(filters.command('broadcast') & filters.user(ADMINS) & filters.private)
+async def broadcast(client: Client, message: Message):
     reply_markup = ReplyKeyboardMarkup(
         keyboard=[[KeyboardButton("Cancel"), KeyboardButton("Confirm")]],
         resize_keyboard=True,
