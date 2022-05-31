@@ -30,7 +30,7 @@ async def filter(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("🤖 Join Updates Channel", url=invite_link.invite_link)
+                            InlineKeyboardButton("Join Updates Channel", url=invite_link.invite_link)
                         ]
                     ]
                 ),
@@ -54,9 +54,9 @@ async def filter(client, message):
         if files:
             for file in files:
                 file_id = file.file_id
-                filename = f"[{get_size(file.file_size)}] {file.file_name}"
+                filename = f"◽{get_size(file.file_size)} ▶{file.file_name}"
                 btn.append(
-                    [InlineKeyboardButton(text=f"{filename}",callback_data=f"subinps#{file_id}")]
+                    [InlineKeyboardButton(text=f"▶{filename}",callback_data=f"subinps#{file_id}")]
                     )
         else:
             msg = await message.reply(f"👋Hey Bro, Check Movie Name In #Google and Try, Again No Results? It's Not Available In Our Database Or Movie Not Released !\n\nബ്രോ, മൂവിയുടെ പേര് മാത്രം #Google നോക്കിയിട്ട് അടിച്ചു നോക്കുക..!\nഎന്നിട്ടും കിട്ടിയില്ലെങ്കിൽ ആ മൂവി ഞങ്ങളുടെ ഡാറ്റാബേസിൽ ഇല്ല, അല്ലെങ്കിൽ ആ മൂവി ഇറങ്ങിയിട്ടില്ല എന്ന് മനസ്സിലാക്കുക!\nRequest Unavailable Movies Here @GrandCinemasadminbot")
@@ -124,9 +124,9 @@ async def group(client, message):
         if files:
             for file in files:
                 file_id = file.file_id
-                filename = f"[{get_size(file.file_size)}] {file.file_name}"
+                filename = f"◽{get_size(file.file_size)} ▶{file.file_name}"
                 btn.append(
-                    [InlineKeyboardButton(text=f"{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
+                    [InlineKeyboardButton(text=f"▶{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
                 )
         else:
             return
@@ -288,11 +288,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "about":
             buttons = [
                 [
-                    InlineKeyboardButton('Update Channel', url='https://t.me/GrandCinemas'),
-                    InlineKeyboardButton('Source Code', url='https://t.me/SearchItRobotUpdates')
+                    InlineKeyboardButton('Update Channel', url='https://t.me/cinemacollections')
                 ]
                 ]
-            await query.message.edit(text="<b>Developer : <a href='https://t.me/SearchItRobotUpdates'>Unknown</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://github.com/subinps/Media-Search-bot'>Click here</a>\nUpdate Channel : <a href='https://t.me/subin_works'>XTZ Bots</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+            await query.message.edit(text="🥷", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 
 
@@ -310,11 +309,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         print(e)
                         f_caption=f_caption
                 if f_caption is None:
-                    f_caption = f"➠➠➠ 𝓢𝓮𝓪𝓻𝓬𝓱𝓘𝓣𝓡𝓸𝓫𝓸𝓽"
+                    f_caption = f"➠➠➠ @MovieSearchingBot"
                 buttons = [
                     [
-                        InlineKeyboardButton('Main Channel', url='https://t.me/GrandCinemas'),
-                        InlineKeyboardButton('Update Channel', url="https://t.me/SearchItRobotUpdates')
+                        InlineKeyboardButton('Ｃｈａｎｎｅｌ', url='https://t.me/cinemacollections'),
+                        InlineKeyboardButton('Ｇｒｏｕｐ', url="https://t.me/movieReqGroup1')
                     ]
                     ]
                 
@@ -342,10 +341,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         print(e)
                         f_caption=f_caption
                 if f_caption is None:
-                    f_caption = f"➠➠➠ 𝓢𝓮𝓪𝓻𝓬𝓱𝓘𝓣𝓡𝓸𝓫𝓸𝓽"
+                    f_caption = f"➠➠➠ @MovieSearchingBot"
                 buttons = [
                     [
-                        InlineKeyboardButton('Update Channel', url='https://t.me/SearchItRobotUpdates')
+                        InlineKeyboardButton('Update Channel', url='https://t.me/cinemacollections')
                     ]
                     ]
                 
