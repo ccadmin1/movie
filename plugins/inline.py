@@ -47,7 +47,7 @@ async def answer(bot, query):
                 print(e)
                 f_caption=f_caption
         if f_caption is None:
-            f_caption = f"➠➠➠ 𝓢𝓮𝓪𝓻𝓬𝓱𝓘𝓣𝓡𝓸𝓫𝓸𝓽"
+            f_caption = f"➠➠➠ @MovieSearchingBot"
         results.append(
             InlineQueryResultCachedDocument(
                 title=file.file_name,
