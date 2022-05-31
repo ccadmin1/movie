@@ -1,8 +1,9 @@
 import os
 import logging
+import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
+from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, BOT_PICS
 from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
@@ -25,9 +26,10 @@ async def start(bot, cmd):
                     return
             except UserNotParticipant:
                 ident, file_id = cmd.text.split("_-_-_-_")
-                await bot.send_message(
+                await bot.send_photo(
                     chat_id=cmd.from_user.id,
-                    text="**Please Join My Updates Channel to use this Bot!**",
+                    photo=f"{random.choice(BOT_PICS)}",
+                    caption="**Please Join My Updates Channel to use this Bot!**",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
@@ -63,7 +65,7 @@ async def start(bot, cmd):
                         print(e)
                         f_caption=f_caption
                 if f_caption is None:
-                    f_caption = f"@searchitrobot"
+                    f_caption = f"@MovieSearchingBot"
                 buttons = [
                     [
                         InlineKeyboardButton('Search Again', switch_inline_query_current_chat='')
@@ -79,30 +81,32 @@ async def start(bot, cmd):
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{err}`")
     elif len(cmd.command) > 1 and cmd.command[1] == 'subscribe':
         invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))
-        await bot.send_message(
+        await bot.send_photo(
             chat_id=cmd.from_user.id,
+            photo=f"{random.choice(BOT_PICS)}",
             text="**Please Join My Updates Channel to use this Bot!**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤖 Join Updates Channel", url=invite_link.invite_link)
+                        InlineKeyboardButton(" Join Updates Channel", url=invite_link.invite_link)
                     ]
                 ]
             )
         )
     else:
-        await cmd.reply_text(
-            START_MSG,
+        await bot.send_photo(
+            photo=f"{random.choice(BOT_PICS)}",
+            caption=START_MSG,
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton("Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton('How to Use Me', url='https://t.me/searchitrobotupdates')
+                        InlineKeyboardButton('How to Use Me', url='https://t.me/movieReqGroup1')
                     ],
                     [
-                        InlineKeyboardButton('About', url='https://t.me/searchitrobotupdates')
+                        InlineKeyboardButton('Ｃｈａｎｎｅｌ', url='https://t.me/cinemacollections')
                     ]
                 ]
             )
@@ -170,7 +174,7 @@ async def delete(bot, message):
         await message.reply('Reply to file with /delete which you want to delete', quote=True)
         return
 
-    for file_type in ("document", "video", "audio"):
+    for file_type in ("document", "video"):
         media = getattr(reply, file_type, None)
         if media is not None:
             break
@@ -191,8 +195,25 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Update Channel', url='https://t.me/GrandCinemas'),
-            InlineKeyboardButton('Source Code', url='https://github.com')
+            InlineKeyboardButton('Ｃｈａｎｎｅｌ', url='https://t.me/cinemacollections'),
+            InlineKeyboardButton('Ｇｒｏｕｐ', url='https://t.me/https://t.me/+vUrK_FA97m1hODAy')
         ]
         ]
-    await message.reply(text="Language : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://github.com'>Click here</a>\nUpdate Channel : <a href='https://t.me/GrandCinemas'>Update</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply(text="Language : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://github.com'>Click here</a>\nUpdate Channel : <a href='https://t.me/CinemaCollections'>Update</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
+@Client.on_message(filters.command('help'))
+async def bot_info(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton('Ｃｈａｎｎｅｌ', url='https://t.me/Cinemacollections'),
+            InlineKeyboardButton('Ｇｒｏｕｐ', url='https://t.me/movieReqGroup1')
+        ]
+        ]
+    await message.reply(text="""🙋🏻‍♂️   Hellooo    <code> {user_name} 🤓</code>
+       
+▶️ ꜱᴇɴᴅ ᴛʜᴇ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ᴏꜰ мovιᴇ ꜱᴇʀɪᴇꜱ ( ᴜꜱᴇ ɢᴏᴏɢʟᴇ.ᴄᴏᴍ ᴛᴏ ɢᴇᴛ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ! ) .
+▫️ Exᴀᴍᴘʟᴇ 1 : Lᴜᴄɪꜰᴇʀ
+▫️ Exᴀᴍᴘʟᴇ 2 : Lᴜᴄɪꜰᴇʀ мᴀʟᴀʏᴀʟᴀм
+▫️ Exᴀᴍᴘʟᴇ 1 : Lᴜᴄɪꜰᴇʀ 2021
+🔺 ɪꜰ ʏᴏᴜ ᴄᴀɴᴛ ꜰɪɴᴅ ᴛʜᴇ мovιᴇ ᴛʜᴀᴛ ʏᴏᴜ ʟᴏᴏᴋɪɴɢ ꜰᴏʀ. ᴛʜᴇɴ ʏᴏᴜ ᴄᴀɴ ꜱᴇɴᴅ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ <a href='https://t.me/DhashamoolamDhamu'>Dᴇᴠ</a>""", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
