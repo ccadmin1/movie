@@ -84,7 +84,7 @@ async def start(bot, cmd):
         await bot.send_photo(
             chat_id=cmd.from_user.id,
             photo=f"{random.choice(BOT_PICS)}",
-            text="**Please Join My Updates Channel to use this Bot!**",
+            caption="**Please Join My Updates Channel to use this Bot!**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
