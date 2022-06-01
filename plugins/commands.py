@@ -97,8 +97,6 @@ async def start(bot, cmd):
         await bot.send_photo(
             photo=f"{random.choice(BOT_PICS)}",
             caption=START_MSG,
-            parse_mode="Markdown",
-            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
